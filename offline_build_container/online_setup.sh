@@ -30,3 +30,6 @@ pushd firmware/mcu_ws > /dev/null
     popd > /dev/null
 
 popd > /dev/null
+
+# Clean package cache so it's not stored in the container
+apt clean
