@@ -24,23 +24,23 @@ else
 fi
 
 ######## Init ########
-apt update 
-apt install -y gcc-arm-none-eabi
+#apt update 
+#apt install -y gcc-arm-none-eabi
 
 cd /uros_ws
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 source install/local_setup.bash
 
-ros2 run micro_ros_setup create_firmware_ws.sh generate_lib
+#ros2 run micro_ros_setup create_firmware_ws.sh generate_lib
 
 ######## Adding extra packages ########
 pushd firmware/mcu_ws > /dev/null
 
     # Workaround: Copy just tf2_msgs
-    git clone -b foxy https://github.com/ros2/geometry2
-    cp -R geometry2/tf2_msgs ros2/tf2_msgs
-    rm -rf geometry2
+#    git clone -b foxy https://github.com/ros2/geometry2
+#    cp -R geometry2/tf2_msgs ros2/tf2_msgs
+#    rm -rf geometry2
 
     # Import user defined packages
     mkdir extra_packages
