@@ -33,6 +33,14 @@ jobs:
 
       - name: Build image
         run: docker build ./offline_build_container --file offline_build_container/Dockerfile --tag $IMAGE_NAME
+        
+      - name: Save image to file
+        run: docker save -o offline_build_container.tar $IMAGE_NAME
+        
+      - uses: actions/upload-artifact@v2
+        with:
+          name: container_tar
+          path: offline_build_container.tar
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
